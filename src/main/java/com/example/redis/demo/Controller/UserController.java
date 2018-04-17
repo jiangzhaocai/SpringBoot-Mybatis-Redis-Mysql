@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
   //  @Autowired
   //  private RedisTemplate redis;
-    //@Autowired
-  //  private UserService userService;
+    @Autowired
+    private UserService userService;
     @RequestMapping(value = "/hello")
-    @Cacheable(value = "getOneVideo")
+ //   @Cacheable(value = "getOneVideo")
     public User getUser() {
         User user = new User(1, "xc", "123456");
         System.out.println("未用缓存");
-//        String name = userDao.getUserName();
-      //  user.setUsername(name);
-        System.out.println("1");
+        long id = 3l;
+        String name = userService.getUserNameById(id);
+        System.out.println("username:" + name);
         return user;
     }
 }
